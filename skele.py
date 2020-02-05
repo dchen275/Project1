@@ -72,13 +72,85 @@ class Antenna:
     def draw(self):
         obj.goto(0,0)
         obj.forward(100)
-
+        
+class Window:
+    def __init__(self, color):
+        self.color = color
+    def draw(self, x, y):
+        obj = turtle.Turtle()
+        obj.fillcolor(self.color)
+        obj.begin_fill()
+        obj.up()
+        obj.goto(x+5, y-5)
+        obj.down()
+        obj.forward(40)
+        obj.right(90)
+        obj.forward(40)
+        obj.right(90)
+        obj.forward(40)
+        obj.right(90)
+        obj.forward(40)
+        obj.end_fill() 
+        
+class Packages:
+    def __init__(self, color):
+        self.color = color
+    def draw(self, x, y):
+        obj = turtle.Turtle()
+        obj.fillcolor(self.color)
+        obj.begin_fill()
+        obj.up()
+        obj.goto(x+70, y-50)
+        obj.down()
+        obj.left(90)
+        obj.forward(50)
+        obj.right(90)
+        obj.forward(10)
+        obj.right(90)
+        obj.forward(20)
+        obj.left(90)
+        obj.forward(40)
+        obj.left(90)
+        obj.forward(20)
+        obj.right(90)
+        obj.forward(10)
+        obj.right(90)
+        obj.forward(50)
+        obj.right(90)
+        obj.forward(60)
+        obj.end_fill()
+        obj.begin_fill()
+        obj.up()
+        obj.goto(x+80, y)
+        obj.down()
+        obj.right(90)
+        obj.forward(40)
+        obj.right(90)
+        obj.forward(40)
+        obj.right(90)
+        obj.forward(60)
+        obj.right(90)
+        obj.forward(40)
+        obj.end_fill()
+        obj.up()
+        obj.goto(x+80, y+40)
+        obj.down()
+        obj.goto(x+50, y-50)
+        obj.up()
+        obj.goto(x+120, y+40)
+        obj.down()
+        obj.goto(x+150, y-50)
+        
 p = Body('blue')
 p.draw(60, 60)
 wheel = Wheel()
 wheel.drawTires()
 antenna = Antenna()
 antenna.draw()
+x = Window('lightblue')
+x.draw(60, 60)
+y = Packages('brown')
+y.draw(60,60)
 
 
 
