@@ -46,7 +46,7 @@ class Wheel:
     def __init__(self, color):
         self.color = color
 
-    def drawTires(self):
+    def draw(self):
         self.backTire()
         self.frontTire()
 
@@ -210,7 +210,7 @@ def Vehicle(x, y, bodycolor, windowcolor, packagecolor, wheelColor, headlightsCo
     packages = Packages(packagecolor)
     packages.draw(x, y)
     wheel = Wheel(wheelColor)
-    wheel.drawTires()
+    wheel.draw()
     antenna = Antenna()
     antenna.draw()
     headlights = Headlights(headlightsColor, taillightColor, x, y)
