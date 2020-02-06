@@ -140,19 +140,16 @@ class Packages:
         obj.goto(x+120, y+40)
         obj.down()
         obj.goto(x+150, y-50)
-        
-p = Body('blue')
-p.draw(60, 60)
-wheel = Wheel()
-wheel.drawTires()
-antenna = Antenna()
-antenna.draw()
-x = Window('lightblue')
-x.draw(60, 60)
-y = Packages('brown')
-y.draw(60,60)
 
-
+def Vehicle(x, y, bodycolor, windowcolor, packagecolor):
+    body = Body(bodycolor)
+    body.draw(x, y)
+    window = Window(windowcolor)
+    window.draw(x, y)
+    packages = Packages(packagecolor)
+    packages.draw(x, y)
+print(Vehicle(60, 60, 'blue', 'lightblue', 'red'))
+screen.listen()
 
 screen.listen()
 screen.mainloop()
