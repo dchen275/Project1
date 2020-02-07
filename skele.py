@@ -39,15 +39,20 @@ class Body:
         self.pen.end_fill()
 
 
+# class to draw the wheels of the car
 class Wheel:
+    # constructor that takes in a color and pen as params
+    # defining the color and pen being used throughout the class
     def __init__(self, color, pen):
         self.color = color
         self.pen = pen
 
+    # method to utilize backTire and frontTire methods within class
     def draw(self):
         self.backTire()
         self.frontTire()
 
+    # method to draw the back color + color it
     def backTire(self):
         self.pen.up()
         self.pen.fillcolor(self.color)
@@ -61,6 +66,7 @@ class Wheel:
         self.pen.circle(25, 360)
         self.pen.end_fill()
 
+    # method to draw the front color + color it
     def frontTire(self):
         self.pen.up()
         self.pen.fillcolor(self.color)
@@ -73,10 +79,13 @@ class Wheel:
         self.pen.end_fill()
 
 
+# class to draw the antenna of the car
 class Antenna:
+    # constructor that takes a pen as the param to draw the antenna
     def __init__(self, pen):
         self.pen = pen
 
+    # method to draw the antenna at the right place
     def draw(self, x, y):
         self.pen.up()
         self.pen.goto(x - 50, y - 50)
@@ -156,7 +165,10 @@ class Packages:
         self.pen.goto(x + 150, y - 50)
 
 
-class Headlights:
+# class to draw the lights of the car
+class Lights:
+    # constructor that takes in the colors of the lights, the pen, and the starting
+    # coordinates as params. They will be utilized in the methods within the class
     def __init__(self, headlightsColor, taillightColor, x, y, pen):
         self.headlightsColor = headlightsColor
         self.taillightColor = taillightColor
@@ -164,10 +176,12 @@ class Headlights:
         self.y = y
         self.pen = pen
 
+    # class to call headlights and taillights to be drawn
     def draw(self):
         self.headlights()
         self.taillights()
 
+    # class to draw headlights and color it
     def headlights(self):
         self.pen.fillcolor(self.headlightsColor)
         self.pen.begin_fill()
@@ -184,6 +198,7 @@ class Headlights:
         self.pen.forward(15)
         self.pen.end_fill()
 
+    # class to draw taillights and color it
     def taillights(self):
         self.pen.fillcolor(self.taillightColor)
         self.pen.begin_fill()
@@ -208,18 +223,25 @@ def vehicle(pen, x, y, bodycolor, windowcolor, packagecolor, wheelColor, headlig
     window.draw(x, y)
     packages = Packages(packagecolor, pen)
     packages.draw(x, y)
+    # declaring a wheel instance and passing in wheel color and pen to be used to draw the wheel
     wheel = Wheel(wheelColor, pen)
+    # calling the draw method within the wheel class
     wheel.draw()
+    # declaring antenna instance and passing in the pen to be used
     antenna = Antenna(pen)
+    # using the draw method within the antenna class passing in the starting coordinates
     antenna.draw(x, y)
-    headlights = Headlights(headlightsColor, taillightColor, x, y, pen)
-    headlights.draw()
+    # declaring lights instance passing in the color, pen, and starting coordinates
+    lights = Lights(headlightsColor, taillightColor, x, y, pen)
+    # using the draw method within the lights class to draw the lights
+    lights.draw()
 
 
+# initialize the screen to be drawn on
 screen = turtle.Screen()
+# sets the background of screen to be white
 screen.bgcolor('white')
-
+# putting in vehicle attributes to be used to draw the vehicle
 vehicle(turtle.Turtle(), 60, 60, 'blue', 'lightblue', 'red', 'black', 'yellow', 'red')
-
-screen.listen()
+# to keep the screen open
 screen.mainloop()
