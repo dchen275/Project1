@@ -1,12 +1,15 @@
 import math
 import turtle
 
-
+#class to create body of car
 class Body:
+    #color and pen as parameters
+    #color assigned when instance is created, pen used as turtle object
     def __init__(self, color, pen):
         self.color = color
         self.pen = pen
-
+        
+    #method to draw and color body
     def draw(self, x, y):
         self.pen.up()
         self.pen.goto(x, y)
@@ -92,12 +95,15 @@ class Antenna:
         self.pen.down()
         self.pen.forward(60)
 
-
+#class to create window of car
 class Window:
+    #color and pen as parameters
+    #color assigned when instance is created, pen used as turtle object
     def __init__(self, color, pen):
         self.color = color
         self.pen = pen
 
+    #method to draw and color window
     def draw(self, x, y):
         self.pen.fillcolor(self.color)
         self.pen.begin_fill()
@@ -114,14 +120,18 @@ class Window:
         self.pen.forward(40)
         self.pen.end_fill()
 
-
+#class to create packages on car
 class Packages:
+    #color and pen as parameters
+    #color assigned when instance is created, pen used as turtle object
     def __init__(self, color, pen):
         self.color = color
         self.pen = pen
-
+    
+    #method to draw and color packages
     def draw(self, x, y):
         self.pen.fillcolor(self.color)
+        #start first package
         self.pen.begin_fill()
         self.pen.up()
         self.pen.goto(x + 70, y - 50)
@@ -142,6 +152,7 @@ class Packages:
         self.pen.right(90)
         self.pen.forward(60)
         self.pen.end_fill()
+        #close first package, start second package
         self.pen.begin_fill()
         self.pen.up()
         self.pen.goto(x + 80, y)
@@ -155,6 +166,7 @@ class Packages:
         self.pen.right(90)
         self.pen.forward(40)
         self.pen.end_fill()
+        #close second package, start wires
         self.pen.up()
         self.pen.goto(x + 80, y + 40)
         self.pen.down()
@@ -217,11 +229,17 @@ class Lights:
 
 
 def vehicle(pen, x, y, bodycolor, windowcolor, packagecolor, wheelColor, headlightsColor, taillightColor):
+    #instance of Body class, passing body color and pen to draw the body
     body = Body(bodycolor, pen)
+    #call draw method in Body class
     body.draw(x, y)
+    #instance of Window class, passing window color and pen to draw the window
     window = Window(windowcolor, pen)
+    #call draw method in Window class
     window.draw(x, y)
+    #instance of Packages class, passing package color and pen to draw the packages
     packages = Packages(packagecolor, pen)
+    #call draw method in Packages class
     packages.draw(x, y)
     # declaring a wheel instance and passing in wheel color and pen to be used to draw the wheel
     wheel = Wheel(wheelColor, pen)
